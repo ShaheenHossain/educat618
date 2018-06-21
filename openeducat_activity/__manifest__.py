@@ -20,7 +20,7 @@
 ###############################################################################
 
 {
-    'name': 'OpenEduCat Activity',
+    'name': 'Activity',
     'version': '10.0.3.0.0',
     'license': 'LGPL-3',
     'category': 'Education',
@@ -28,7 +28,7 @@
     'summary': 'Manage Activities',
     'complexity': "easy",
     'author': 'Tech Receptives',
-    'website': 'http://www.openeducat.org',
+    'website': 'http://www.eagle-erp.com',
     'depends': ['openeducat_core'],
     'data': [
         'security/ir.model.access.csv',
