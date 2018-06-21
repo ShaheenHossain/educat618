@@ -20,15 +20,15 @@
 ###############################################################################
 
 {
-    'name': 'OpenEduCat Attendance',
+    'name': 'Attendance',
     'version': '10.0.3.0.0',
     'license': 'LGPL-3',
     'category': 'Education',
     "sequence": 3,
     'summary': 'Manage Attendances',
     'complexity': "easy",
-    'author': 'Tech Receptives',
-    'website': 'http://www.openeducat.org',
+    'author': 'Md. Shaheen Hossain',
+    'website': 'http://www.eagle-erp.com',
     'depends': ['openeducat_core', 'openeducat_timetable'],
     'data': [
         'security/ir.model.access.csv',
