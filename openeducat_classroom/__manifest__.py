@@ -1,6 +1,6 @@
 
 {
-    'name': 'Classroom',
+    'name': 'Eagle Education Classroom',
     'version': '10.0.3.0.0',
     'license': 'LGPL-3',
     'category': 'Education',
