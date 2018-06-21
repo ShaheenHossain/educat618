@@ -20,15 +20,15 @@
 ###############################################################################
 
 {
-    'name': 'OpenEduCat Assignment',
+    'name': 'Assignment',
     'version': '10.0.3.0.0',
     'license': 'LGPL-3',
     'category': 'Education',
     "sequence": 3,
     'summary': 'Manage Assgiments',
     'complexity': "easy",
-    'author': 'Tech Receptives',
-    'website': 'http://www.openeducat.org',
+    'author': 'Md. Shaheen Hossain',
+    'website': 'http://www.eagle-erp.com',
     'depends': ['openeducat_core', 'base_action_rule'],
     'data': [
         'security/ir.model.access.csv',
