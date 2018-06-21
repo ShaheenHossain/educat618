@@ -27,7 +27,7 @@
     "sequence": 3,
     'summary': 'Manage Activities',
     'complexity': "easy",
-    'author': 'Tech Receptives',
+    'author': 'Md. Shaheen Hossain',
     'website': 'http://www.eagle-erp.com',
     'depends': ['openeducat_core'],
     'data': [
