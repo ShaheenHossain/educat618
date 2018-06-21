@@ -20,15 +20,15 @@
 ##############################################################################
 
 {
-    'name': "OpenEduCat Admission",
+    'name': "Admission",
     'version': '10.0.3.0.0',
     'license': 'LGPL-3',
     'category': 'Education',
     'sequence': 3,
     'summary': "Manage Admissions""",
     'complexity': "easy",
-    'author': 'Tech Receptives',
-    'website': 'http://www.openeducat.org',
+    'author': 'Md. Shaheen Hossain',
+    'website': 'http://www.eagle-erp.com',
     'depends': ['openeducat_fees', 'openeducat_core'],
     'data': [
         'views/admission_register_view.xml',
