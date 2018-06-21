@@ -1,5 +1,5 @@
 {
-    'name': 'EduCation Core',
+    'name': 'Eagle Education Core',
     'version': '10.0.3.0.0',
     'license': 'LGPL-3',
     'category': 'Education',
