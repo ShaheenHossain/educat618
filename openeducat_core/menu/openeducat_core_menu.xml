@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <!-- Openeducat Menu -->
-        <menuitem id="menu_op_school_root" name="OpenEduCat"
+        <!-- eEducation Menu -->
+        <menuitem id="menu_op_school_root" name="eEducation"
             sequence="10"
             web_icon="openeducat_core,static/description/icon.png" />
 
