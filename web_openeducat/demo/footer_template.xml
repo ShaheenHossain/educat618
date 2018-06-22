@@ -3,7 +3,7 @@
     <data noupdate="1">
 
         <template id="footer_custom1" inherit_id="website.layout"
-            name="Openeducat Footer">
+            name="eEducation Footer">
             <xpath expr="//div[@id='footer']" position="replace">
                 <div class="oe_structure" id="footer" style="padding-top:0px;">
                     <section class="footer-section">
@@ -90,25 +90,25 @@
                                                         class="fa fa-map-marker"
                                                         aria-hidden="true"></i>
                                                 </div>
-                                                <div class="text text-white">1725
-                                                    Slough Ave. United
-                                                    States
+                                                <div class="text text-white">165
+                                                    Bishil
+                                                    Mirpur-1, Dhaka
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="icon pr8">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <div class="text text-white">+1 555
-                                                    123 8069
+                                                <div class="text text-white">+8801726
+                                                    880011
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="icon pr8">
                                                     <i class="fa fa-print "></i>
                                                 </div>
-                                                <div class="text text-white">+1 998 71
-                                                    150 30 20
+                                                <div class="text text-white">+88017
+                                                    26880011
                                                 </div>
                                             </li>
                                             <li>
@@ -117,7 +117,7 @@
                                                 </div>
                                                 <div class="text text-white">
                                                     <a href="#"
-                                                        class="text-white">info@example.com
+                                                        class="text-white">eagle.it.services.com@gmail.com
                                                     </a>
                                                 </div>
                                             </li>
