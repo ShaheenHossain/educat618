@@ -3,11 +3,11 @@
     <data noupdate="1">
 
         <record id="website.default_website" model="website">
-            <field name="social_twitter">https://twitter.com/openeducat</field>
-            <field name="social_facebook">https://facebook.com/openeducat</field>
-            <field name="social_googleplus">https://plus.google.com/+OpenEduCat</field>
-            <field name="social_github">https://github.com/openeducat</field>
-            <field name="social_youtube">https://youtube.com/channel/UC7HLHTgfsOTE-ueRVNZ4Avg</field>
+            <field name="social_twitter">https://twitter.com</field>
+            <field name="social_facebook">https://facebook.com</field>
+            <field name="social_googleplus">https://plus.google.com</field>
+            <field name="social_github">https://github.com</field>
+            <field name="social_youtube">https://youtube.com</field>
             <field name="social_linkedin"></field>
         </record>
 
@@ -15,9 +15,9 @@
             <xpath expr="//div[@class='col-md-4 col-lg-5 col-lg-offset-1']/div" position="replace">
                 <div>
                     <p>
-                        OpenEduCat is a product developed by Tech-Receptives
+                        Eagle Education System is a product developed by Eagle IT Team
                         Solutions Pvt. Ltd., an expert company focusing in providing
-                        unique open source solutions.
+                        unique solutions.
                         <br />
                         In due course we accumulated a team of strong, experienced,
                         creative, talented and dedicated engineers and designers.
@@ -33,14 +33,14 @@
 
         <template id="aboutus_openeducat" inherit_id="website.aboutus" name="About us">
             <xpath expr="//div[@class='col-md-12']/h3" position="replace">
-                <h3 class="text-muted text-center">Comprehensive Open Source ERP for Educational Institutes</h3>
+                <h3 class="text-muted text-center">Comprehensive Eagle ERP for Educational Institutes</h3>
             </xpath>
             <xpath expr="//div[@class='col-md-6 mt32']" position="replace">
                 <div class="col-md-6 mt32">
                     <p>
-                        OpenEduCat is a product developed by Tech-Receptives
+                        Eagle Education is a product developed by Eagle ERP
                         Solutions Pvt. Ltd., an expert company focusing in providing
-                        unique open source solutions.
+                        unique solutions.
                         <br />
                         In due course we accumulated a team of strong, experienced,
                         creative, talented and dedicated engineers and designers.
@@ -56,7 +56,7 @@
                         Open Source, on the other hand, acts as a fuel to education
                         and other acts of freedom in the software related field.
                     </p>
-                    <p>TechReceptives understand both Open Source and Educational
+                    <p>Eagle ERP understand both Educational
                         needs of the society and have come up their novel approach
                         for educational institute -- a full open source ERP solution,
                         that provides the educational institute for managing
