@@ -12,7 +12,7 @@
         <report
             id="action_report_student_bonafide" 
             model="op.student" 
-            string="Bonafide Certificate"
+            string="Character Certificate"
             report_type="qweb-pdf"
             name="openeducat_core.report_student_bonafide" 
             file="openeducat_core.report_student_bonafide"
