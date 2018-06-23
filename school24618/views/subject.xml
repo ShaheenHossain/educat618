@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+  <record id="view_op_subject_form_inherit" model="ir.ui.view">
+     <field name="name">eschool.op.subject.inherit</field>
+      <field name="model">op.subject</field>
+      <field name="priority">24</field>
+     <field name="inherit_id" ref="openeducat_core.view_op_subject_form"/>
+     <field name="arch" type="xml">
+         <xpath expr="//field[@name='name']" position="before">
+        <field name="subject_group"/>
+
+       </xpath>
+       <xpath expr="//field[@name='grade_weightage']" position="replace">
+        <field name="objective"/>
+        <!--just delete grade weightage-->
+       </xpath>
+
+          <xpath expr="//field[@name='objective']" position="after">
+        <field name="batch_id"/>
+        <!--just delete grade weightage-->
+       </xpath>
+
+         <xpath expr="//group[1]" position="after">
+             <group col="2" string="Syllabus">
+                 <field name="syllabus"/>
+             </group>
+             <group col="4" string="Marks ">
+                 <field name="total_mark"/>
+                 <field name="total_pass_mark"/>
+                 <field name="theory_mark" attrs="{'invisible':[('type','=','practical')]}"/>
+                 <field name="theory_pass_mark"  attrs="{'invisible':[('type','=','practical')]}"/>
+                <field name="subjective_mark" attrs="{'invisible':[('objective','=',False)]}"/>
+                 <field name="subjective_pass_mark"  attrs="{'invisible':[('objective','=',False)]}"/>
+                <field name="objective_mark" attrs="{'invisible':[('objective','=',False)]}"/>
+                 <field name="objective_pass_mark"  attrs="{'invisible':[('objective','=',False)]}"/>
+                 <field name="practical_mark"  attrs="{'invisible':[('type','=','theory')]}"/>
+                 <field name="practical_pass_mark"  attrs="{'invisible':[('type','=','theory')]}"/>
+             </group>
+       </xpath>
+     </field>
+   </record>
+<record id="view_op_subject_tree_inherit" model="ir.ui.view">
+     <field name="name">eschool.op.subject.tree.inherit</field>
+      <field name="model">op.subject</field>
+      <field name="priority">24</field>
+     <field name="inherit_id" ref="openeducat_core.view_op_subject_tree"/>
+     <field name="arch" type="xml">
+         <xpath expr="//field[@name='grade_weightage']" position="replace">
+
+       </xpath>
+
+     </field>
+   </record>
+
+  <record id="view_op_subject_registration_form_inherit" model="ir.ui.view">
+     <field name="name">eschool.op.subject.registration.inherit</field>
+      <field name="model">op.subject.registration</field>
+      <field name="priority">24</field>
+     <field name="inherit_id" ref="openeducat_core.view_subject_registration_form"/>
+     <field name="arch" type="xml">
+         <xpath expr="//field[@name='elective_subject_ids']" position="replace">
+        <field name="elective_subject_ids" widget="many2many_tags"
+                                domain="[('subject_type', '=', 'elective'),('course_id', '=', course_id),('batch_id', '=', batch_id)]"
+                                attrs="{'readonly':[('state','!=','draft')]}" />
+       </xpath>
+
+     </field>
+   </record>
+
+
+</data>
+</odoo>
