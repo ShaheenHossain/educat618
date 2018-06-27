@@ -14,7 +14,7 @@
 </t>
 <t t-extend="WebClient">
     <t t-jquery="span.url" t-operation="replace">
-        <span class="url"><a id="support_link" href="http://www.eagle-it-services.com""
+        <span class="url"><a id="support_link" href="http://www.eagle-it-services.com"
     target="_blank"></a></span>
     </t>
 </t>
