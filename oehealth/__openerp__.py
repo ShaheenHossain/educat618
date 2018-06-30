@@ -1,0 +1,86 @@
+
+{
+    'name': 'eHospital',
+    'version': '1.0',
+    'author': "Md. Shaheen Hossain",
+    'category': 'Generic Modules/Medical',
+    'summary': 'Eagle Hospital Management Solutions',
+    'depends': ['base', 'sale', 'purchase', 'account', 'product','document','hr','web'],
+    'description': """
+
+About eHospital
+---------------
+
+eHospital is a multi-user, highly scalable, centralized Electronic Medical Record (EMR) and Hospital Information System for Eagle ERP.
+
+""",
+    "website": "http://www.eagle-it-services.com",
+    "data": [
+        'sequence/oeh_sequence.xml',
+        'oeh_navigation.xml',
+        'oeh_medical/res_partner_view.xml',
+        'oeh_medical/product_product_view.xml',
+        'oeh_medical/oeh_medical_medicaments_view.xml',
+        'oeh_medical/oeh_medical_pharmacy_view.xml',
+        'oeh_medical/oeh_medical_healthcenters_view.xml',
+        'oeh_medical/oeh_medical_pathology_view.xml',
+        'oeh_medical/oeh_medical_inpatient_view.xml',
+        'oeh_medical/oeh_medical_view.xml',
+        'oeh_medical/account_invoice_view.xml',
+        'oeh_medical/oeh_medical_insurance_view.xml',
+        'oeh_medical/oeh_medical_ethnic_groups_view.xml',
+        'oeh_medical/oeh_medical_genetics_view.xml',
+        'oeh_medical/data/oeh_physician_specialities.xml',
+        'oeh_medical/data/oeh_physician_degrees.xml',
+        'oeh_medical/data/oeh_insurance_types.xml',
+        'oeh_medical/data/oeh_ethnic_groups.xml',
+        'oeh_medical/data/oeh_who_medicaments.xml',
+        'oeh_medical/data/oeh_dose_units.xml',
+        'oeh_medical/data/oeh_drug_administration_routes.xml',
+        'oeh_medical/data/oeh_drug_form.xml',
+        'oeh_medical/data/oeh_dose_frequencies.xml',
+        'oeh_medical/data/oeh_genetic_risks.xml',
+        'oeh_medical/data/oeh_report_paperformat.xml',
+        'oeh_medical/views/report_patient_label.xml',
+        'oeh_medical/views/report_patient_medicines.xml',
+        'oeh_medical/views/report_appointment_receipt.xml',
+        'oeh_medical/views/report_patient_prescriptions.xml',
+        'oeh_medical/oeh_medical_report.xml',
+
+        'oeh_evaluation/oeh_medical_evaluation_view.xml',
+        'oeh_socioeconomics/oeh_medical_socioeconomics_view.xml',
+        'oeh_socioeconomics/data/oeh_occupations.xml',
+        'oeh_gyneco/oeh_medical_gyneco_view.xml',
+        'oeh_lifestyle/oeh_medical_lifestyle_view.xml',
+        'oeh_lifestyle/data/oeh_recreational_drugs.xml',
+        'oeh_lab/oeh_medical_lab_view.xml',
+        'oeh_lab/data/oeh_lab_test_units.xml',
+        'oeh_lab/data/oeh_lab_test_types.xml',
+        'oeh_lab/views/report_patient_labtest.xml',
+        'oeh_lab/oeh_medical_lab_report.xml',
+        
+        'oeh_medical/data/oeh_disease_categories.xml',
+        'oeh_medical/data/oeh_diseases.xml',
+
+        'security/oeh_security.xml',
+        'security/ir.model.access.csv',
+        'security/ir.rule.xml',
+        'views/oehealth.xml',
+    ],
+    "images": ['images/main_screenshot.png'],
+    "demo": [
+
+    ],
+    'test':[
+    ],
+    'css': [
+
+    ],
+    'js': [
+
+    ],
+    'qweb': [
+
+    ],
+    "active": False
+}
