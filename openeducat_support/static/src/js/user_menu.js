@@ -5,13 +5,13 @@ odoo.define('web_user_menu', function(require) {
 
     UserMenu.include({
         on_menu_documentation: function() {
-            window.open('http://doc.openeducat.org/', '_blank');
+            window.open('http://www.eagle-it-services.com/', '_blank');
         },
         on_menu_support: function() {
-            window.open('https://www.openeducat.org/page/support', '_blank');
+            window.open('https://www.eagle-it-services.com', '_blank');
         },
         on_menu_account: function() {
-            window.open('https://www.openeducat.org/web/login', '_blank');
+            window.open('https://wwww.eagle-it-services.com', '_blank');
         },
     });
 });
