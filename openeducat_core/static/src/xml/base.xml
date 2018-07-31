@@ -8,7 +8,7 @@
     </t>
      <t t-jquery="div.oe_login_footer" t-operation="after">
             <div class="oe_login_footer" style="top:250px">
-                <a href="http://www.eagle-it-services.com" target="_blank">Provided by <span>Eagle ERP/span></a>
+                <a href="http://www.eagle-it-services.com" target="_blank">Provided by <span>Eagle ERP</span></a>
             </div>
      </t>
 </t>
