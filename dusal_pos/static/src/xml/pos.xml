@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+  <t t-extend="Chrome">
+    <t t-jquery=".pos-logo" t-operation="replace">
+      <img class="pos-logo" t-att-src="widget.pos.company &amp;&amp; widget.pos.company.logo ? 'data:image/png;base64,' + widget.pos.company.logo : widget.pos.company_logo_base64"/>
+    </t>
+  </t>
+
+  <t t-extend="PosTicket">
+    <t t-jquery=".pos-sale-ticket div:first" t-operation="after">
+      <t t-if="widget.pos.config.print_orderno_barcode">
+        <div class="pos-center-align" id="ticket-barcode">
+          <t t-if="order.uid"><t t-esc="order.uid"/></t>
+          <t t-if="order.get('uid')"><t t-esc="order.get('uid')"/></t>
+        </div>
+      </t>
+      <t t-if="widget.pos.config.print_company_logo">
+        <div id="company_logo"><img t-att-src="widget.pos.company &amp;&amp; widget.pos.company.logo ? 'data:image/png;base64,' + widget.pos.company.logo : widget.pos.company_logo_base64" style="padding-top: 4px; height: 50px; max-width: 100%;"/></div>
+      </t>
+    </t>
+
+    <t t-jquery=".pos-sale-ticket table.receipt-orderlines" t-operation="after">
+      <t t-if="widget.pos.config.categorize_receipt">
+        <style>
+          table.receipt-orderlines {
+            display: none !important;
+          }
+        </style>
+        <t t-set="total_items" t-value="0"></t>
+        <t t-foreach="orderlines" t-as="l">
+          <t t-if="l.is_selected_product">
+            <t t-set="cat_sum" t-value="0"></t>
+            <t t-set="cat_items" t-value="0"></t>
+
+            <t t-foreach="orderlines" t-as="orderline">
+              <table class="receipt-orderlines-categorized">
+                <colgroup>
+                  <col width='50%'/>
+                  <col width='25%'/>
+                  <col width='25%'/>
+                </colgroup>
+                <t t-if="orderline.is_selected_product()">
+                  <t t-if="l.get_category_id()==orderline.get_category_id()">
+                    <t t-if="l.is_selected_category()">
+                      <h4><t t-esc="l.get_category()"/></h4>
+                      <t t-esc="l.set_selected_category(false)"></t>
+                    </t>
+                    <t t-set="cat_sum" t-value="cat_sum + orderline.get_display_price()"/>
+                    <t t-set="cat_items" t-value="cat_items + orderline.get_quantity()"/>
+                    <tr>
+                      <td>
+                        <t t-esc="orderline.get_product().display_name"/>
+                        <t t-if="orderline.get_discount() > 0">
+                          <div class="pos-disc-font">
+                            With a
+                            <t t-esc="orderline.get_discount()"/>% discount
+                          </div>
+                        </t>
+                      </td>
+                      <td class="pos-right-align">
+                        <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                      </td>
+                      <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(orderline.get_display_price())"/>
+                      </td>
+                    </tr>
+                    <t t-esc="orderline.set_selected_product(false)"/>
+                    <t t-esc="l.set_select(true)"/>
+                  </t>
+                </t>
+              </table>
+            </t>
+          </t>
+          <t t-if="l.is_select()">
+            <table class="receipt-orderlines-categorized">
+              <colgroup>
+                <col width='50%'/>
+                <col width='25%'/>
+                <col width='25%'/>
+              </colgroup>
+              <tr class="line-total">
+                <td></td>
+                <td class="pos-right-align">
+                  <t t-esc="cat_items"/>
+                  <t t-set="total_items" t-value="total_items + cat_items"/>
+                </td>
+                <td class="pos-right-align">
+                  <t t-esc="widget.format_currency(cat_sum)"/>
+                </td>
+              </tr>
+            </table>
+          </t>
+
+        </t>
+        <table class="receipt-orderlines-categorized">
+          <colgroup>
+            <col width='50%'/>
+            <col width='25%'/>
+            <col width='25%'/>
+          </colgroup>
+          <tr style="height: 10px;"></tr>
+          <tr style="border-top:1px solid #000;">
+            <td>Total Items:</td>
+            <td class="pos-right-align">
+              <t t-esc="total_items"/>
+            </td>
+            <td></td>
+          </tr>
+        </table>
+      </t>
+
+    </t>
+  </t>
+
+  <t t-extend="Product">
+    <t t-jquery=".product-img" t-operation="append">
+      <span t-attf-class="qty-tag #{product.qty_available lte 0 ? 'not-available':''}">
+        <t t-set='unit_id' t-value='product.uom_id[0]'/>
+        <t t-if="unit_id">
+          <t t-set='qty_available_round' t-value='Math.ceil(Math.log(1.0 / widget.pos.units_by_id[unit_id].rounding) / Math.log(10))'/>
+        </t>
+        <t t-if="!unit_id">
+          <t t-set='qty_available_round' t-value='2'/>
+        </t>
+        <t t-esc="product.qty_available.toFixed(qty_available_round)"/>
+      </span>
+    </t>
+  </t>
+  <t t-extend="Orderline">
+    <t t-jquery=".info-list>t:first-child">
+      this.attr('t-if', "line.get_quantity_str() !== '1' || line.selected || line.get_product().qty_available lt line.quantity ");
+    </t>
+    <t t-jquery="t[t-esc='line.get_quantity_str()']" t-operation="after">
+      <t t-set='cur_product' t-value='line.get_product()'/>
+      <t t-set='unit_id' t-value='cur_product.uom_id[0]'/>
+      <t t-if="unit_id">
+        <t t-set='qty_available_round' t-value='Math.ceil(Math.log(1.0 / widget.pos.units_by_id[unit_id].rounding) / Math.log(10))'/>
+      </t>
+      <t t-if="!unit_id">
+        <t t-set='qty_available_round' t-value='2'/>
+      </t>
+      <t t-set='qty_available' t-value='cur_product.qty_available.toFixed(qty_available_round)'/>
+      (of
+      <span t-attf-class="qty-info #{qty_available lt line.quantity ? 'not-available':''}"><t t-esc="qty_available"/></span>)
+    </t>
+  </t>
+</templates>
