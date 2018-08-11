@@ -1,0 +1,2 @@
+"id","model_id/id","template_body","model_object_field_id/id","from_mobile","sms_from","from_mobile_verified_id/id","name"
+"__export__.sms_template_1","eagle_sms.model_op_student","Dear guardian, Your Pupil ${object.display_name} is absent to school today.","openeducat_core.field_op_student_display_name","DSBLSC","","__export__.sms_number_1","Absent Student"
