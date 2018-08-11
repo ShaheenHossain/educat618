@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="openeducat_core_course_form_inherit" model="ir.ui.view">
+            <field name="name">eschool.op.course.inherit</field>
+            <field name="model">op.course</field>
+            <field name="priority">24</field>
+            <field name="inherit_id" ref="openeducat_core.view_op_course_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='section']" position="replace">
+                    <field name="level"/>
+                    <field name="batch_id"/>
+
+                    <field name="group" domain="[('level_ids','=',level)]"/>
+                </xpath>
+                <xpath expr="//field[@name='max_unit_load']" position="replace">
+
+                </xpath>
+                <xpath expr="//field[@name='min_unit_load']" position="replace">
+
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="replace">
+                    <field name="active" />
+                </xpath>
+                <xpath expr="/form['0']" position="inside">
+                    <header groups="openeducat_core.group_op_back_office_admin">
+                        <button string="Create Classes" type="object"  name="create_classes" />
+                    </header>
+                </xpath>
+                <xpath expr="//field[@name='fees_term_id']" position="replace">
+
+                </xpath>
+                <xpath expr="//group[@name='subject']" position="replace">
+                    <notebook>
+                        <page  string="Students">
+                            <group string="Students" name="student">
+                                <field name="course_student_ids" nolabel="1" >
+                                    <tree editable="top">
+                                        <field  name="student_id"/>
+                                        <field name="roll_number"/>
+                                        <field name="batch_id" />
+                                        <field name="section_id"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page  string="Subject">
+                            <group string="Subjects">
+                                <field name="subject_ids" nolabel="1" />
+                            </group>
+                        </page>
+                        <page  string="Sections">
+                            <group string="Sections">
+                                <field name="section_ids" nolabel="1" />
+                            </group>
+                        </page>
+                        <page  string="Classes">
+                            <group string="Classes">
+                                <field name="classes_ids" nolabel="1" >
+                                    <tree editable="top">
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="section_name"/>
+                                        <field name="class_room"/>
+
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+
+                    </notebook>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="openeducat_core_course_tree_inherit" model="ir.ui.view">
+    <field name="name">eschool.op.course.tree.inherit</field>
+    <field name="model">op.course</field>
+    <field name="priority">24</field>
+    <field name="inherit_id" ref="openeducat_core.view_op_course_tree"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='code']" position="after">
+            <field name="batch_id"/>
+        </xpath>
+        <xpath expr="//field[@name='fees_term_id']" position="replace">
+        <!--hide fees term whish is useless-->
+        </xpath>
+        <xpath expr="//field[@name='section']" position="replace">
+        <!--hide section whish is useless-->
+        </xpath>
+
+    </field>
+</record>
+
+        <record id="view_eschool_classes_form" model="ir.ui.view">
+            <field name="name">eschool.classes.form</field>
+            <field name="model">eschool.classes</field>
+            <field name="priority" eval="10" />
+            <field name="arch" type="xml">
+                <form string="Classes">
+                    <group col="4" name="main">
+                        <field name="name" />
+                        <field name="code"/>
+                        <field name="course_id"/>
+                        <field name="group_id"/>
+                        <field name="batch_id" domain="[('course_id','=' ,course_id),('active','=' ,True)]"/>
+                        <field name="section_id" domain="[('course_ids','=',course_id)]"/>
+                        <field name="section_name"/>
+                        <field name="class_room"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Students">
+                        <field name="student_id" nolabel="1"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_eschool_classes_tree" model="ir.ui.view">
+            <field name="name">eschool.classes.tree</field>
+            <field name="model">eschool.classes</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Classes">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="course_id"/>
+                    <field name="batch_id"/>
+                    <field name="section_id"/>
+                    <field name="section_name"/>
+                    <field name="class_room"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_view_eschool_classes" model="ir.actions.act_window">
+            <field name="name">Class Profile</field>
+            <field name="res_model">eschool.classes</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_eschool_classes" name="Classes" parent="openeducat_core.menu_op_school_config_course" sequence="10"
+            action="action_view_eschool_classes"  />
+
+    </data>
+</odoo>

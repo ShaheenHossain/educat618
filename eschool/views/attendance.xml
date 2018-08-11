@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="openeducat_core_attandance_register_form_inherit" model="ir.ui.view">
+            <field name="name">eschool.op.attendance.register.inherit</field>
+            <field name="model">op.attendance.register</field>
+            <field name="priority">24</field>
+            <field name="inherit_id" ref="openeducat_attendance.view_op_attendance_register_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='batch_id']" position="replace">
+                    <field name="batch_id" readonly="True"/>
+                    <field name="id" invisible="True"/>
+                    <!--<field name="classes_id"/>-->
+                </xpath>
+                 <xpath expr="//field[@name='code']" position="replace">
+                    <field name="code" />
+                    <!--<field name="classes_id"/>-->
+                </xpath>
+                <xpath expr="//field[@name='course_id']" position="replace">
+                    <field name="course_id" attrs="{'readonly':[('id','>', 0)]}"/>
+                    <!--<field name="classes_id"/>-->
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="view_op_attendance_sheet_form_inherit" model="ir.ui.view">
+            <field name="name">op.attendance.sheet.form.inherit</field>
+            <field name="model">op.attendance.sheet</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="openeducat_attendance.view_op_attendance_sheet_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='session_id']" position="replace">
+                    <field name="classes_id" domain="[('course_id', '=', course_id)]"/>
+                    <field name="section_id" readonly="True"/>
+                </xpath>
+                <xpath expr="//group[2]" position="before">
+                    <button name="get_students" type="object" string="Get Students"/>
+                </xpath>
+                <xpath expr="//group[2]" position="replace">
+                    <field name="attendance_line" colspan="4" nolabel="1">
+                                <tree string="Attendance Line" editable="top">
+                                    <field name="roll_no" />
+                                    <field name="student_id" domain="[('course_detail_ids.course_id','=',parent.course_id),('course_detail_ids.batch_id','=',parent.batch_id)]" />
+                                    <field name="present" />
+                                    <field name="remark" />
+                                </tree>
+                            </field>
+                </xpath>
+
+
+            </field>
+        </record>
+        <record id="view_op_attendance_line_form_inherit" model="ir.ui.view">
+            <field name="name">op.attendance.line.form.inherit</field>
+            <field name="model">op.attendance.line</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="openeducat_attendance.view_op_attendance_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='course_id']" position="after">
+                    <field name="group_id"/>
+                    <field name="classes_id"/>
+                    <field name="section_id"/>
+                </xpath>
+
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

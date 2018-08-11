@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_op_exam_session_form_inherit" model="ir.ui.view">
+          <field name="name">op.exam.session.form.inherit</field>
+          <field name="model">op.exam.session</field>
+          <field name="priority" eval="8" />
+        <field name="inherit_id" ref="openeducat_exam.view_op_exam_session_form"/>
+          <field name="arch" type="xml">
+             <xpath expr="//group[1]" position="after">
+                 <field name="generated" attrs="{'invisible':True }"/>
+                      <button name="get_exams" type="object" attrs="{'invisible' : [('generated', '=', True)]}"  string="Generate Shedule"/>
+
+             </xpath>
+               <xpath expr="//field[@name='batch_id']" position="replace">
+                 <field name="batch_id" />
+             </xpath>
+              <xpath expr="//field[@name='exam_ids']" position="attributes">
+                 <attribute name="readonly">0</attribute>
+             </xpath>
+              <xpath expr="//field[@name='exam_ids']/tree" position="attributes">
+                 <attribute name="editable">top</attribute>
+             </xpath>
+          </field>
+  </record>
+ <record id="view_op_exam_form_inherit" model="ir.ui.view">
+    <field name="name">op.exam.form.inherit</field>
+    <field name="model">op.exam</field>
+    <field name="priority" eval="8" />
+    <field name="inherit_id" ref="openeducat_exam.view_op_exam_form"/>
+     <field name="arch" type="xml">
+        <xpath expr="//field[@name='attendees_line']" position="replace">
+
+                <field name="attendees_line" readonly="0" nolabel="1"  >
+                    <tree editable="top">
+                        <field name="student_id"/>
+                        <field name="status"/>
+                        <field name="tutorial_mark"/>
+                        <field name="subjective_mark"/>
+                        <field name="objective_mark"/>
+                        <field name="practical_mark"/>
+
+
+                    </tree>
+                </field>
+        </xpath>
+     </field>
+  </record>
+<record id="view_op_grade_configuration_form_inherit" model="ir.ui.view">
+    <field name="name">op.grade.configuration.form.inherit</field>
+    <field name="model">op.grade.configuration</field>
+    <field name="priority" eval="8" />
+    <field name="inherit_id" ref="openeducat_exam.view_op_grade_configuration_form"/>
+     <field name="arch" type="xml">
+        <xpath expr="//field[@name='result']" position="after">
+
+                <field name="score"   />
+
+        </xpath>
+     </field>
+  </record>
+    </data>
+</odoo>

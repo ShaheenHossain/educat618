@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="tabulation_report">
+            <style>
+                .font{
+                font-size:14px;
+                font-family:"Helvetica"
+                }
+                @page{
+                margin-top:1%;
+                size: A4;
+                }
+            </style>
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <div class="font">
+                        <div class="page">
+                            <t t-foreach="docs" t-as="objs">
+                                <t t-foreach="objs" t-as="obj">
+                                     <div class="row text-center">
+
+            <strong><span  t-raw="'%s' % objs.name if objs.name else''" /></strong>
+
+            <table>
+                <tr><td>Class :</td><td><span  t-raw="'%s' % objs.course_id.name if objs.course_id.name else''" /></td></tr>
+                <tr><td>Batch :</td><td><span  t-raw="'%s' % objs.batch_id.name if objs.batch_id.name else''" /></td></tr>
+
+            </table>
+
+        <t t-foreach="objs.exam_ids" t-as="ex_id">
+        <t t-foreach="ex_id.attendees_line" t-as="at_line">
+		<table border="1">
+        <tr align="center">
+			<td><span  t-raw="'%s' % at_line.student_id.gr_no if at_line.student_id.gr_no else''" /></td><td rowspan="2"> Roll</td><td rowspan="2"> Name</td><td rowspan="2"> paper</td>
+			<!-- Subjects -->
+			<td colspan="4"> Ban</td>
+			<!-- Subjects -->
+			<!-- Total -->
+			<td rowspan="2">GPA</td><td rowspan="2">Total Marks</td>
+		</tr>
+		<tr>
+			<td> Tut</td><td> Sub</td><td> Obj</td><td> Total</td>
+
+		</tr>
+		<tr>
+			<td rowspan="2"> IdNo</td><td rowspan="2"> Roll</td><td rowspan="2"> Name</td><td> 1st</td><td> T Num</td><td> SubNum</td><td> ObjNum</td><td> Total</td><td rowspan="2">Score(Grade)</td><td rowspan="2">Total Marks</td></tr>
+		<tr><td> 2nd</td><td> T2Num</td><td> Sub2 Num</td><td> Obj2Num</td><td> Grad</td></tr>
+	</table>
+        </t>
+        </t>
+                            </div>
+                            
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

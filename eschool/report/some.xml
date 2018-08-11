@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_some_report">
+            <style>
+                .font{
+                font-size:14px;
+                font-family:"Helvetica"
+                }
+                @page{
+                margin-top:1%;
+                size: A4;
+                }
+            </style>
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <div class="font">
+                        <div class="page">
+                            <t t-foreach="docs" t-as="objs">
+                                <t t-foreach="objs" t-as="obj">
+                                     <div class="row text-center">
+                                                <h2>
+                                                    <strong><span t-raw="'%s' % obj.name if obj.name else ''" />
+                                                    </strong>
+                                                </h2>
+                                            </div>
+                                      <div>
+
+                                      </div>
+
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

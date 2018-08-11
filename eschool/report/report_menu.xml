@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--<report-->
+            <!--id="report_tabulationsheet_report"-->
+            <!--string="Tabulation Sheet"-->
+            <!--model='op.exam.session'-->
+            <!--report_type="qweb-pdf"-->
+            <!--file="eschool.report_tabulationsheet_report"-->
+            <!--name="eschool.report_tabulationsheet_report"-->
+        <!--/>-->
+        <report
+            id="action_report_tabulation_report"
+            string="Tabulation"
+            model='op.exam.session'
+            report_type="qweb-pdf"
+            file="eschool.report_tabulat_report"
+            name="eschool.tabulation_report"
+        />
+
+        <!--<report-->
+            <!--id="action_report_student_idcard" -->
+            <!--model="op.student" -->
+            <!--string="Student IdCardssssssss"-->
+            <!--report_type="qweb-pdf"-->
+            <!--name="eschool.report_student_idcards"-->
+            <!--file="eschool.report_student_idcards"-->
+        <!--/>-->
+        <!--<report-->
+            <!--id="action_report_student_bonafide" -->
+            <!--model="op.student" -->
+            <!--string="Bonafide Certificate"-->
+            <!--report_type="qweb-pdf"-->
+            <!--name="openeducat_core.report_student_bonafide" -->
+            <!--file="openeducat_core.report_student_bonafide"-->
+        <!--/>-->
+    </data>
+</odoo>

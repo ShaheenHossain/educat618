@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+        <record id="openeducat_core_batch_form_inherit" model="ir.ui.view">
+     <field name="name">next.op.batch.inherit</field>
+      <field name="model">op.batch</field>
+      <field name="priority">24</field>
+     <field name="inherit_id" ref="openeducat_core.view_op_batch_form"/>
+     <field name="arch" type="xml">
+       <xpath expr="//field[@name='course_id']" position="replace">
+           <field name="active"/>
+       </xpath>
+     <xpath expr="//group[@name='main']" position="after">
+         <field name="course_id">
+             <tree>
+                 <field name="name"/>
+                 <field name="code"/>
+                 <field name="evaluation_type"/>
+
+             </tree>
+         </field>
+       </xpath>
+     </field>
+   </record>
+
+        <record id="openeducat_core_class_room_form_inherit" model="ir.ui.view">
+             <field name="name">next.op.class.room.inherit</field>
+              <field name="model">op.classroom</field>
+              <field name="priority">24</field>
+             <field name="inherit_id" ref="openeducat_classroom.view_op_classroom_form"/>
+             <field name="arch" type="xml">
+           <xpath expr="//field[@name='batch_id']" position="after">
+               <field name="section_id"/>
+           </xpath>
+
+     </field>
+   </record>
+
+
+         <record id="view_eschool_course_division_form" model="ir.ui.view">
+            <field name="name">eschool.course.division.form</field>
+            <field name="model">eschool.course.division</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Groups">
+                    <group col="4" name="main">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="description"/>
+
+                    </group>
+                    <field name="level_ids"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_eschool_course_division_tree" model="ir.ui.view">
+            <field name="name">eschool.course.division.form</field>
+            <field name="model">eschool.course.division</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Groups">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!---->
+
+        <record id="view_eschool_level_form" model="ir.ui.view">
+            <field name="name">eschool.level.form</field>
+            <field name="model">eschool.level</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="level">
+                    <group col="4">
+                        <field name="sequence"/>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="description"/>
+                    </group>
+                    <group string="Sections">
+                        <!--<field name="section_ids" nolabel="1"/>-->
+                    </group>
+                    <group string="Groups">
+                        <field name="group_ids" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_eschool_religion_form" model="ir.ui.view">
+            <field name="name">eschool.religion.form</field>
+            <field name="model">eschool.religion</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="level">
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="description"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+<record id="view_eschool_class_section_form" model="ir.ui.view">
+            <field name="name">eschool.class.section.form</field>
+            <field name="model">eschool.class.section</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Sections">
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="description"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_eschool_level_tree" model="ir.ui.view">
+            <field name="name">eschool.level.tree</field>
+            <field name="model">eschool.level</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="level">
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+<!--actions-->
+        <record id="action_view_course_divisions" model="ir.actions.act_window">
+            <field name="name">Course Group</field>
+            <field name="res_model">eschool.course.division</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_view_create_eschool_classes" model="ir.actions.act_window">
+            <field name="name">create Classes Group</field>
+            <field name="res_model">eschool.create.classes</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_view_eschool_class_section" model="ir.actions.act_window">
+            <field name="name">class Section</field>
+            <field name="res_model">eschool.class.section</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_view_eschool_religion" model="ir.actions.act_window">
+            <field name="name">Religion</field>
+            <field name="res_model">eschool.religion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_view_level" model="ir.actions.act_window">
+            <field name="name">level/Class Profile</field>
+            <field name="res_model">eschool.level</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+         <menuitem id="menu_eschool_level" name="Levels" parent="openeducat_core.menu_op_school_config_course" sequence="10"
+            action="action_view_level"  />
+
+        <menuitem id="menu_eschool_division" name="Groups" parent="openeducat_core.menu_op_school_config_course" sequence="10"
+            action="action_view_course_divisions"  />
+        <menuitem id="menu_eschool_religion" name="Religion" parent="openeducat_core.menu_op_school_config_course" sequence="10"
+            action="action_view_eschool_religion"  />
+        <menuitem id="menu_eschool_section" name="Sections" parent="openeducat_core.menu_op_school_config_course" sequence="10"
+            action="action_view_eschool_class_section"  />
+        <menuitem id="menu_eschool_create_classes" name="Create Classes" parent="openeducat_core.menu_op_school_config_course" sequence="10"
+            action="action_view_create_eschool_classes"  />
+
+
+    </data>
+</odoo>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+<record id="openeducat_core_student_form_inherit" model="ir.ui.view">
+    <field name="name">eschool.op.student.inherit</field>
+    <field name="model">op.student</field>
+    <field name="priority">24</field>
+    <field name="inherit_id" ref="openeducat_core.view_op_student_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='visa_info']" position="replace">
+            <field name="religion"/>
+            <field name="doa"/>
+            <field name="coa"/>
+            <field name="code"/>
+
+        </xpath>
+        <xpath expr="//field[@name='email']" position="after">
+            <field name="mobile"/>
+        </xpath>
+        <xpath expr="//field[@name='course_detail_ids']" position="replace">
+            <field name="course_detail_ids" nolabel="1">
+                <tree string="Course Details">
+                    <field name="course_id" />
+                    <field name="batch_id" />
+                    <field name="section_id" />
+                    <field name="roll_number" />
+                    <field name="subject_ids" widget="many2many_tags" />
+                </tree>
+                <form>
+                    <group cols="2" colspan="2">
+                        <field name="course_id" />
+                        <field name="batch_id" domain="[('course_id', '=', course_id)]" />
+                        <field name="section_id" />
+                        <field name="roll_number" />
+                    </group>
+                    <group col="4" string="Subjects">
+                        <field name="subject_ids" colspan="4" nolabel="1" />
+                    </group>
+                </form>
+            </field>
+        </xpath>
+        <xpath expr="//field[@name='parent_ids']" position="replace">
+            <group col="4">
+              <field name="father"/>
+              <field name="fcontact"/>
+              <field name="mother"/>
+              <field name="mcontact"/>
+              <field name="guardian"/>
+              <field name="gname"/>
+              <field name="gcontact"/>
+            </group>
+          </xpath>
+        <xpath expr="//div[@name='div_address']" position="after">
+            <label for="vill" string="Permanent Address"/>
+                <div name="permanent_address">
+                    <field name="vill" placeholder="Vill/Street..."/>
+                    <field name="po" placeholder="PO/Street2"/>
+                    <div class="address_format">
+                        <field name="ps" placeholder="Thana/City" style="width: 40%"/>
+                        <field name="dst" class="oe_no_button" placeholder="District" style="width: 37%" options="{&quot;no_open&quot;: True}"/>
+                    </div>
+                    <field name="country" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True}" default='20'/>
+                </div>
+        </xpath>
+<!--insert section id after batch id of student form-->
+        <xpath expr="//field[@name='course_detail_ids']/form/group/field[@name='batch_id']" position="after">
+           <field name="section_id"/>
+        </xpath>
+
+
+     </field>
+   </record>
+
+
+<record id="view_op_student_search_inherit" model="ir.ui.view">
+            <field name="name">op.student.search</field>
+            <field name="model">op.student</field>
+            <field name="inherit_id" ref="openeducat_core.view_op_student_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="code"/>
+                </xpath>
+
+            </field>
+        </record>
+
+<record id="openeducat_core_student_Course_form" model="ir.ui.view">
+    <field name="name">eschool.op.student.course.form</field>
+    <field name="model">op.student.course</field>
+    <field name="priority">24</field>
+    <field name="arch" type="xml">
+        <form string="Course Details">
+            <group col="4">
+                <field name="student_id"/>
+            </group>
+        </form>
+    </field>
+   </record>
+
+     <record model="ir.actions.act_window" id="act_open_op_student_course_view">
+            <field name="name">Classes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">op.student.course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <!--<field name="search_view_id" ref="view_op_student_search" />-->
+            <!--<field name="domain">[]</field>-->
+            <!--<field name="context">{}</field>-->
+        </record>
+
+      </data>
+</odoo>
